@@ -13,7 +13,11 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/SecondFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -23,6 +27,35 @@
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/FirstFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="title_action"
+            app:argType="string" />
+        <argument
+            android:name="item_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="item_english"
+            app:argType="string" />
+        <argument
+            android:name="item_chinese"
+            app:argType="string" />
+        <argument
+            android:name="item_phone"
+            app:argType="string" />
+        <argument
+            android:name="item_email"
+            app:argType="string" />
+        <argument
+            android:name="item_birthday"
+            app:argType="java.util.Date" />
+        <argument
+            android:name="item_imageuri"
+            app:argType="java.net.URI" />
     </fragment>
 </navigation>
