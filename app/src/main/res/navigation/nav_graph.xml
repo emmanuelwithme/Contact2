@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.contact2.SecondFragment"
-        android:label="@string/second_fragment_label"
+        android:label="{title_action}"
         tools:layout="@layout/fragment_second">
 
         <action
@@ -34,28 +34,35 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="title_action"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
         <argument
             android:name="item_id"
             android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="item_english"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
         <argument
             android:name="item_chinese"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
         <argument
             android:name="item_phone"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
         <argument
             android:name="item_email"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
         <argument
             android:name="item_birthday"
-            app:argType="java.util.Date" />
+            app:argType="java.util.Date"
+            app:nullable="true" />
         <argument
             android:name="item_imageuri"
-            app:argType="java.net.URI" />
+            app:argType="java.net.URI"
+            app:nullable="true" />
     </fragment>
 </navigation>

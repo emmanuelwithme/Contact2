@@ -1,12 +1,13 @@
 package com.example.contact2
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.contact2.databinding.FragmentFirstBinding
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -34,6 +35,21 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
+        binding.fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+            val directions = FirstFragmentDirections.actionFirstFragmentToSecondFragment(
+                "Add Contact",
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0
+            )
+            this.findNavController().navigate(directions)
         }
     }
 

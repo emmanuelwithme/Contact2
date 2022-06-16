@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1375" />
+        <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/drawable/icon.xml" value="0.1375" />
         <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/layout/content_main.xml" value="0.12" />
-        <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/layout/fragment_first.xml" value="0.22" />
+        <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/layout/fragment_first.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/layout/fragment_first_item.xml" value="0.22" />
         <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/layout/fragment_main.xml" value="0.12001811594202899" />
         <entry key="..\:/Users/wow90/AndroidStudioProjects/Contact2/app/src/main/res/layout/fragment_second.xml" value="0.14666666666666667" />
