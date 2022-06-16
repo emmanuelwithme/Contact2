@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.contact2.databinding.FragmentSecondBinding
 
@@ -23,7 +22,7 @@ class SecondFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // TODO: 從 floating button 新增資料時，不能顯示 deleteBtn
         //  declare a val for addData button and setOnClickListener
