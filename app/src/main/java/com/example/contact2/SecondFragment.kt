@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.contact2.databinding.FragmentSecondBinding
 
@@ -23,6 +24,10 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // TODO: 從 floating button 新增資料時，不能顯示 deleteBtn
+        //  declare a val for addData button and setOnClickListener
+        //  use contentResolver.insert(TargetTableToInsertTo: Uri, contentValues)
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root

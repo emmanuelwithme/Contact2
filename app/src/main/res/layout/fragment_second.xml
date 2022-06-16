@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fab_margin"
-            android:hint="English"
+            android:hint="@string/english"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fab_margin"
-            android:hint="Chinese"
+            android:hint="@string/chinese"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_name_label">
@@ -52,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Phone"
+            android:hint="@string/phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_price_label">
@@ -70,7 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Email"
+            android:hint="@string/email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_phone_label">
@@ -88,7 +88,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Birthday(格式YYYY.MM.DD)"
+            android:hint="@string/birthday"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_email_label">
@@ -106,7 +106,7 @@
             android:id="@+id/pickImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pick Image"
+            android:text="@string/pick"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_date_label" />
@@ -115,7 +115,7 @@
             android:id="@+id/item_uri_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="ImageUri"
+            android:hint="@string/imageUri"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pickImage">
@@ -137,14 +137,15 @@
             android:layout_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_uri_label"
-            tools:srcCompat="@drawable/img_20220227_113828" />
+            tools:srcCompat="@drawable/img_20220227_113828"
+            android:contentDescription="@string/image_description"/>
 
         <Button
             android:id="@+id/save_action"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Save"
+            android:text="@string/save_btn_text"
             app:layout_constraintBottom_toTopOf="@id/delete_action"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +157,7 @@
             android:layout_width="411dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Delete"
+            android:text="@string/delete_btn_text"
             app:layout_constraintBottom_toTopOf="@id/textview_second"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +167,7 @@
             android:id="@+id/textview_second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fragment_second"
+            android:text="@string/fragment_second"
             app:layout_constraintBottom_toTopOf="@id/button_second"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
