@@ -14,7 +14,7 @@
     <!-- input hints -->
     <string name="english">English</string>
     <string name="chinese">Chinese</string>
-    <string name="phone">Photo</string>
+    <string name="phone">Phone</string>
     <string name="email">Email</string>
     <string name="birthday">Birthday(格式YYYY.MM.DD)</string>
     <string name="pick">Pick Image</string>

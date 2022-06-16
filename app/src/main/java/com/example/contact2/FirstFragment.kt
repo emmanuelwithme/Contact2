@@ -13,8 +13,7 @@ import com.google.android.material.snackbar.Snackbar
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-
-
+    
     private var _binding: FragmentFirstBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView.
@@ -38,8 +37,8 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()*/
             val directions = FirstFragmentDirections.actionFirstFragmentToSecondFragment(
                 "Add Contact",
                 null,
