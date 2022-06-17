@@ -56,11 +56,6 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        // TODO: 從 floating button 新增資料時，不能顯示 deleteBtn
-        //  declare a val for addData button and setOnClickListener
-        //  use contentResolver.insert(TargetTableToInsertTo: Uri, contentValues)
-
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -114,9 +109,48 @@ class SecondFragment : Fragment() {
             startActivityForResult(gallery, PICK_IMAGE)
         }
 
-
         val itemId = navigationArgs.itemId
         if (itemId > 0) {
+
+            saveUpdateBtn.setOnClickListener {
+                Log.w("UpdateSaveBtn", "Into the section of UpdateSaveBtn !")
+
+                val vocEng = cursor?.getString(1)
+                val vocCn = cursor?.getString(2)
+                val phoneString = cursor?.getString(3)
+                val emailString = cursor?.getString(4)
+                val birthdayString = cursor?.getString(5)
+                val imageUri2 = cursor?.getString(6)
+
+                var uri2 = Uri.withAppendedPath(dbUri, idColumn.toString())
+                var contentValues = ContentValues()
+                contentValues.put(vocEnglish, binding.vocEnglish.text.toString())
+                contentValues.put(vocChinese, binding.vocChinese.text.toString())
+                contentValues.put(phone, binding.phone.text.toString())
+                contentValues.put(email, binding.email.text.toString())
+                contentValues.put(birthday, binding.date.text.toString())
+                contentValues.put(imageUri, binding.imageUri.text.toString())
+
+                Toast.makeText(activity,
+                    "Updated data:\n" +
+                            "vocEnglish = ${vocEnglishText.text.toString()}\n" +
+                            "vocChinese = ${vocChineseText.text.toString()}\n" +
+                            "phone = ${phoneText.text.toString()}\n" +
+                            "email   = ${emailText.text.toString()}\n" +
+                            "birthday      = ${birthdayText.text.toString()}\n" +
+                            "imageUri      = ${imageUriText.text.toString()}\""
+                    ,Toast.LENGTH_LONG).show()
+
+                cResolver!!.update(uri2, contentValues,
+                    "vocEnglish=? and vocChinese=? and phone=? and email=? and birthday=? and imageUri=?",
+                    arrayOf(vocEng, vocCn, phoneString, emailString, birthdayString, imageUri2,
+                    idColumn.toString())
+                )
+
+                cursor?.requery()
+
+                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            }
 
         } else {
             insertSaveBtn.setOnClickListener {
@@ -135,6 +169,9 @@ class SecondFragment : Fragment() {
                 contentValues.put(imageUri, binding.imageUri.text.toString())
 
                 // step2: Show success toast when operation is completed
+                var imgUriText = binding.imageUri.text.toString()
+                var imgUriType = imgUriText::class.java.typeName
+
                 Toast.makeText(
                     activity,
                     "inserted\n" +
@@ -143,8 +180,9 @@ class SecondFragment : Fragment() {
                             "phone = ${phoneText.text.toString()}\n" +
                             "email   = ${emailText.text.toString()}\n" +
                             "birthday      = ${birthdayText.text.toString()}\n" +
-                            "imageUri      = ${imageUriText.text.toString()}\"", Toast.LENGTH_LONG
-                ).show()
+                            "imageUri      = ${imageUriText.text.toString()}\"" +
+                            "imageUriType  = $imgUriType"
+                    , Toast.LENGTH_LONG).show()
 
                 // step3: use cResolver to insert data, two params are:
                 //        cResolver.insert(targetTableUri, contentValues)
@@ -203,13 +241,13 @@ class SecondFragment : Fragment() {
                 this.requireActivity(),
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) -> {
-                // Adsictional rationale should be display
+                // Additional rationale should be display
                 requestPermissionLauncher.launch(
                     Manifest.permission.READ_EXTERNAL_STORAGE
                 )
             }
             else -> {
-                // Permissison has not been asked yet
+                // Permission has not been asked yet
                 requestPermissionLauncher.launch(
                     Manifest.permission.READ_EXTERNAL_STORAGE
                 )
