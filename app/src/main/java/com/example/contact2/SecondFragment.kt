@@ -9,11 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.internal.view.SupportMenu
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.AppBarConfiguration
 import com.example.contact2.databinding.FragmentSecondBinding
 
 /**
@@ -50,13 +48,13 @@ class SecondFragment : Fragment() {
         }*/
 
         val AUTHORITY = "com.example.inventory"
+        val URL = "content://$AUTHORITY/item"
+        val dbUri: Uri = Uri.parse(URL)
         val CONTACT_TABLE_NAME = "item"
-        val URL = "content://$AUTHORITY/$CONTACT_TABLE_NAME"
-        val uri1: Uri = Uri.parse(URL)
 
         // because here is fragment, we need to get the activity first then get the resolver
-        val cResolver = activity?.contentResolver?.acquireContentProviderClient(uri1)
-        val cursor: Cursor? = cResolver?.query(uri1, null, null, null, null)
+        val cResolver = requireActivity().contentResolver.acquireContentProviderClient(dbUri)
+        val cursor: Cursor? = cResolver?.query(dbUri, null, null, null, null)
 
         // column names of the table
         val id = "_id"
@@ -84,12 +82,9 @@ class SecondFragment : Fragment() {
         // val queryNextBtn
 
         insertSaveBtn.setOnClickListener {
-            Log.d("InsertSaveBtn", "Into the section of InsertSaveBtn !")
+            Log.w("InsertSaveBtn", "Into the section of InsertSaveBtn !")
 
-            // TODO: step1: define the table uri for cResolver to access
-            val uri2 = Uri.parse("content://com.example.inventory.provider/item")
-
-            // TODO: step2: define contentValues with user entered data
+            // step1: define contentValues with user entered data
             // ContentValues are key -> value pairs, for cResolver to process
             // the put() will put values according to given column names(first param)
             val contentValues = ContentValues()
@@ -101,9 +96,10 @@ class SecondFragment : Fragment() {
             contentValues.put(birthday, binding.date.text.toString())
             contentValues.put(imageUri, binding.imageUri.text.toString())
 
-            // TODO: step3: Show success toast when operation is completed
+            // step2: Show success toast when operation is completed
             Toast.makeText(activity,
-                "insert vocEnglish = ${vocEnglishText.text.toString()}\n" +
+                "inserted\n" +
+                        "vocEnglish = ${vocEnglishText.text.toString()}\n" +
                         "vocChinese = ${vocChineseText.text.toString()}\n" +
                         "phone = ${phoneText.text.toString()}\n" +
                         "email   = ${emailText.text.toString()}\n" +
@@ -111,23 +107,33 @@ class SecondFragment : Fragment() {
                         "imageUri      = ${imageUriText.text.toString()}\""
                 , Toast.LENGTH_LONG).show()
 
-            // TODO: step4: use cResolver to insert data, two params are:
-            //       cResolver.insert(targetTableUri, contentValues)
-            cResolver?.insert(uri2, contentValues)
+            // step3: use cResolver to insert data, two params are:
+            //        cResolver.insert(targetTableUri, contentValues)
+            cResolver?.insert(dbUri, contentValues)
             cursor?.requery()
+            //cResolver?.release()
+            //cursor?.close()
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
 
         deleteBtn.setOnClickListener {
 
             if(cursor?.moveToFirst()!!) {
-                // var id = cursor.getInt(0) // id is at column position 0 of the table
-                val uri2 = Uri.withAppendedPath(uri1, idColumn.toString())
+                var id = cursor.getInt(0) // id is at column position 0 of the table
+                val uri2 = Uri.withAppendedPath(dbUri, idColumn.toString())
                 val vocEng = cursor.getString(1)
+                val vocCn = cursor.getString(2)
+                val phoneString = cursor.getString(3)
+                val emailString = cursor.getString(4)
+                val birthdayString = cursor.getString(5)
+                val imageUri2 = cursor.getString(6)
+
                 Toast.makeText(activity,"You deleted current item !", Toast.LENGTH_LONG).show()
 
                 // delete(targetTableUri, SqlWhereClause, Array<String!>?)
-                cResolver.delete( uri2,"null", arrayOf(vocEng, idColumn.toString()))
+                cResolver.delete(uri2
+                    ,"vocEnglish=? and vocChinese=? and phone=? and email=? and birthday=? and imageUri=?"
+                    , arrayOf(vocEng, vocCn, phoneString, emailString, birthdayString, imageUri2, idColumn.toString()))
 
                 cursor.requery()
             }

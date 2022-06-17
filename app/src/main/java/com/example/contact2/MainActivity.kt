@@ -17,7 +17,6 @@ import com.example.contact2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    // TODO:
     //  Notes:
     //  1. set buttons' Listeners in the onCreate()
     //  2. moveToNext() means move to the next row of the item table
@@ -30,8 +29,6 @@ class MainActivity : AppCompatActivity() {
     //      5-1. 第一個參數指向 dbURI,第二個 projection是 StringArray,放所有colNames. ex: []:{ DB.colName1,DB.colName2,DB.colName3..... }
     //           第三個是選擇要查詢的 col,如果null就全部cols的資料都查,第四跳過,第五 order 就是 SQL的 ORDER BY,根據哪個 col做排序
 
-
-    // TODO:
     //  1. Acknowledge what is Cursor
     //      1-1 ContentValues(): values: ContentValues()
     //          1-1.1. values.put(): to insert data for a column name. ex: values.put(columnName, values(different types))
@@ -40,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     //  3. How can Cursor work with ContentResolver
     //  4. How 3. can be use in our Room case
 
-    // TODO: Button settings
+    // Button settings
     //  1. Add button functions at second fragment:
     //     When fields are filled, pressing the "SAVE" button to insert the data
     //  2. Delete button functions at second fragment
@@ -49,9 +46,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
-    // for this app to send request to our target db
-    private var CONTENT_URI = Uri.parse("content://com.example.inventory.provider/item")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
